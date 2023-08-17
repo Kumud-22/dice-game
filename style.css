@@ -169,3 +169,6 @@ main {
 .hidden {
   display: none;
 }
+.kumud {
+  position: absolute;
+}
