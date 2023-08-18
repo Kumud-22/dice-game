@@ -62,16 +62,23 @@ let rolldice = () => {
   }
 };
 let hold = () => {
+  var sound1 = new Audio(" success-fanfare-trumpets-6185.mp3");
+  var playSound = function () {
+    if (scores[activePlayer] >= 20) {
+      sound1.play();
+    }
+  };
   if (playing) {
     scores[activePlayer] += currentscore;
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
-    if (scores[activePlayer] >= 50) {
+    if (scores[activePlayer] >= 20) {
       playing = false;
       diceEl.classList.add("hidden");
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add("player--winner");
+      playSound();
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove("player--active");
@@ -83,3 +90,12 @@ let hold = () => {
 rollbtnEl.addEventListener("click", rolldice);
 holdbtnEl.addEventListener("click", hold);
 resetbtnEl.addEventListener("click", init);
+
+function sound() {
+  var snd = new Audio(" rpg-dice-rolling-95182.mp3"); //wav is also supported
+  snd.play(); //plays the sound
+}
+function sounde() {
+  var snd = new Audio(" buttonpress-45980.mp3"); //wav is also supported
+  snd.play(); //plays the sound
+}
